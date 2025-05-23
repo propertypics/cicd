@@ -94,17 +94,17 @@ jobs:
           type=raw,value=latest,enable={{is_default_branch}}
           
     - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-          ghcr.io/${{ github.repository }}:latest
-          ghcr.io/${{ github.repository }}:${{ github.ref_name }}
-          ghcr.io/${{ github.repository }}:${{ github.ref_name }}-${{ github.sha:0:7 }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+        ghcr.io/${{ github.repository }}:latest
+        ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+        ghcr.io/${{ github.repository }}:${{ github.ref_name }}-${{ github.sha:0:7 }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
 
 
   # Deploy to Staging
