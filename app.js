@@ -12,7 +12,6 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('combined'));
 app.use(express.json());
-app.use(express.static('public'));
 
 // Routes
 app.get('/test', (req, res) => {
@@ -90,6 +89,8 @@ app.post('/api/users', (req, res) => {
   
   res.status(201).json(newUser);
 });
+
+express.static('public')
 
 // Error handling middleware
 app.use((err, req, res, _next) => {
