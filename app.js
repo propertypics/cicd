@@ -15,6 +15,14 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Routes
+app.get('/test', (req, res) => {
+  res.json({
+    message: 'Express CI/CD Sandbox API',
+    environment: ENV,
+    version: require('./package.json').version,
+    timestamp: new Date().toISOString()
+  });
+});
 app.get('/', (req, res) => {
   res.json({
     message: 'Express CI/CD Sandbox API',
