@@ -90,7 +90,7 @@ app.post('/api/users', (req, res) => {
   res.status(201).json(newUser);
 });
 
-express.static('public')
+express.static('public');
 
 // Error handling middleware
 app.use((err, req, res, _next) => {
