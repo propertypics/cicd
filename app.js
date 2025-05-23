@@ -23,11 +23,19 @@ app.get('/test', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
 app.get('/', (req, res) => {
+  let version;
+  try {
+    version = require('./package.json').version;
+  } catch (error) {
+    version = '1.0.0'; // fallback version
+  }
+  
   res.json({
     message: 'Express CI/CD Sandbox API',
     environment: ENV,
-    version: require('./package.json').version,
+    version: version,
     timestamp: new Date().toISOString()
   });
 });
